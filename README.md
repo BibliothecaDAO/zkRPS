@@ -2,18 +2,26 @@
 
 A simple rock-paper-scissors commit reveal scheme game built on dojo
 
-`sozo execute CreateGame --calldata 3`
+### Install
 
-`sozo execute JoinGame --calldata 0`
+To install Dojo, use the following commands:
 
-`sozo execute Commit --calldata=0,214585235161475357424179868697593518496576949055548172335309505920954063106`
+1. Follow the instructions at [https://book.dojoengine.org/getting-started/installation.html](https://book.dojoengine.org/getting-started/installation.html) to install Dojo.
 
-`sozo execute Commit --calldata=0,3165026789427940773000938179506358876317298524448703329726057549612803596036`
+### Usage
 
-`sozo execute Reveal --calldata=0,12345,1`
+Once Dojo is installed, follow these steps:
 
-`sozo execute Reveal --calldata=0,12345,2`
-
+1. Run Katana: `katana --seed 0 --allow-zero-max-fee`
+2. Build the game: `sozo build`
+3. Deploy the game to Katana: `sozo migrate` (you will need to comment out the World address in Scarb.toml, then once deployed uncomment)
+4. Create a game: `sozo execute CreateGame --calldata 3`
+5. Open another terminal and navigate to the `player_two` directory
+6. Join the game as player two: `sozo execute JoinGame --calldata 0`
+7. In the original terminal, commit your Poseidon hash: `sozo execute Commit --calldata=0,214585235161475357424179868697593518496576949055548172335309505920954063106`
+8. In the `player_two` terminal, commit your move: `sozo execute Commit --calldata=0,3165026789427940773000938179506358876317298524448703329726057549612803596036`
+9. Reveal player 1's move: `sozo execute Reveal --calldata=0,12345,1`
+10. Reveal player 2's move: `sozo execute Reveal --calldata=0,12345,2`
 
 ## The Game
 
